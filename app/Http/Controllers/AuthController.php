@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateOrUpdateUserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Repositories\AuthRepository;
-use Illuminate\Http\Request;
+use App\Http\Resources\UsersResource;
 
 class AuthController extends Controller
 {
@@ -14,6 +14,12 @@ class AuthController extends Controller
     {
     }
 
+
+    /**
+     * login user .
+     * @unauthenticated
+     * @response array{user: UsersResource, access_token: string}}
+     */
     public function login(LoginRequest $loginRequest)
     {
         // validate data in controller layer
@@ -22,6 +28,11 @@ class AuthController extends Controller
         return $this->authRepository->login($data);
     }
 
+    /**
+     * register user .
+     * @unauthenticated
+     * @response array{user: UsersResource, access_token: string}}
+     */
     public function register(CreateOrUpdateUserRequest $registerRequest)
     {
         // validate data in controller layer
