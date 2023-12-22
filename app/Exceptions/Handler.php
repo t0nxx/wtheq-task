@@ -27,4 +27,10 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // enfore returning json response for API in case of validation / errors (no redirect like views)
+    protected function shouldReturnJson($request, Throwable $e): bool
+    {
+        return parent::shouldReturnJson($request, $e) || $request->is("api/*");
+    }
 }
