@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 // Auth Routes
 
-// Route::post('/auth/register', [AuthController::class, 'login']);
-// Route::post('/auth/login', [AuthController::class, 'registration']);
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 
 // Users Routes
-// Route::middleware('auth:sanctum')->apiResource('users', UsersController::class);
-
-Route::apiResource('users', UsersController::class);
+// any action on this routes should be authenticated (require token)
+Route::middleware('auth:sanctum')->apiResource('users', UsersController::class);

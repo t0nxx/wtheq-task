@@ -28,6 +28,14 @@ class UsersRepository implements CrudRepositoryInterface
         return $user;
     }
 
+    public function getByEmail($email)
+    {
+        $user = $this->model->where('email', $email)->first();
+        if (!$user) {
+            throw new NotFoundHttpException('User not found');
+        }
+        return $user;
+    }
     public function create(array $data)
     {
         return $this->model->create($data);
