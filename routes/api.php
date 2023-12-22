@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,8 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 // Users Routes
 // any action on this routes should be authenticated (require token)
 Route::middleware('auth:sanctum')->apiResource('users', UsersController::class);
+
+
+// products routes
+// any action on this routes should be authenticated (require token)
+Route::middleware('auth:sanctum')->apiResource('products', ProductController::class);

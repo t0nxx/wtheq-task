@@ -22,7 +22,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created users in storage.
+     * Store a newly created users in database.
      */
     public function store(CreateOrUpdateUserRequest $request)
     {
@@ -40,17 +40,17 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified users in storage.
+     * Update the specified users in database.
      */
-    public function update(CreateOrUpdateUserRequest $request, $user)
+    public function update(CreateOrUpdateUserRequest $request, $id)
     {
         // validate data in controller layer
         $data = $request->validated();
-        return new UsersResource($this->userRepository->update($user, $data));
+        return new UsersResource($this->userRepository->update($id, $data));
     }
 
     /**
-     * Remove the specified users from storage.
+     * Remove the specified users from database.
      */
     public function destroy($id)
     {
