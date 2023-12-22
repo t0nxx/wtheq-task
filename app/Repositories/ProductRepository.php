@@ -46,6 +46,8 @@ class ProductRepository implements CrudRepositoryInterface
 
     public function create(array $data)
     {
+        $data['user_id'] = auth()->id();
+
         return $this->model->create($data);
     }
 

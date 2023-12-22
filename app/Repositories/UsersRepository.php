@@ -44,12 +44,27 @@ class UsersRepository implements CrudRepositoryInterface
     public function update($id, array $data)
     {
         $user = $this->getById($id);
+
+        /**
+         * make sure the owner only can update their own account
+         * later could add admin except to update / delete any user
+         */
+        if ($user->id !== auth()->user()->id) {
+            throw new \Exception('You are not authorized to update this user');
+        }
         $user->update($data);
         return $user;
     }
     public function delete($id)
     {
         $user = $this->getById($id);
+        /**
+         * make sure the owner only can update their own account
+         * later could add admin except to update / delete any user
+         */
+        if ($user->id !== auth()->user()->id) {
+            throw new \Exception('You are not authorized to update this user');
+        }
         $user->delete();
         return ['message' => 'user deleted successfully'];
     }

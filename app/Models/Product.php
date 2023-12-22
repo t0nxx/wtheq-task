@@ -30,7 +30,6 @@ class Product extends Model
          */
         static::creating(function ($product) {
             $product->slug =  Str::slug($product->name) . '-' . str::random(4);
-            $product->user_id = auth()->id();
         });
 
         /**
