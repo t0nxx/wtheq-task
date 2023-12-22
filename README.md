@@ -1,5 +1,7 @@
 # Wtheq Task
 
+### Watch setup instructions sideo
+[Setup-Video](https://youtu.be/_RqOXoOnAvY)
 
 ## Prerequisites & Environment
 
